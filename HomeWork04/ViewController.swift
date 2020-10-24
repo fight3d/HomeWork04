@@ -21,7 +21,8 @@ class ViewController: UIViewController {
 //        task5(number: 12345)
 //        task6(password: "12345qwerty")
 //        task6(password: "afd+34sdJSL")
-        task7(array: [9, 1, 2, 4, 9, 1, 7, 7])
+//        task7(array: [9, 1, 2, 4, 9, 1, 7, 7])
+        task8(word: "Федор Иваночич, здравствуйте. Как дела?")
     }
     
 //Задача 1. Создать строку с своим именем, вывести количество символов содержащихся в ней.
@@ -139,35 +140,88 @@ class ViewController: UIViewController {
     
     
     //Задача 7. Сортировка массива не встроенным методом по возрастанию + удалить дубликаты
-    func task7(array: [Int]){
-        let sortedArray = sortArray(array: array)
-        let arrayWithNoDublicated = removeDublicates(array: sortedArray)
-        print("\(array) -> \(arrayWithNoDublicated)")
-       
-    }
-
-    func sortArray (array : [Int]) -> [Int]{
-        var sortedArray = array
-        var temp : Int
+//    func task7(array: [Int]){
+//        let sortedArray = sortArray(array: array)
+//        let arrayWithNoDublicated = removeDublicates(array: sortedArray)
+//        print("\(array) -> \(arrayWithNoDublicated)")
+//
+//    }
+//
+//    func sortArray (array : [Int]) -> [Int]{
+//        var sortedArray = array
+//        var temp : Int
+//
+//        for i in 0 ..< sortedArray.count {
+//            for y in 1 ..< sortedArray.count - i {
+//                if sortedArray[y-1] > sortedArray[y]{
+//                    temp = sortedArray[y]
+//                    sortedArray[y] = sortedArray[y-1]
+//                    sortedArray[y-1] = temp
+//                }
+//            }
+//        }
+//        return sortedArray
+//    }
+//
+//    func removeDublicates(array: [Int]) -> [Int]{
+//        var newArray = array
+//        newArray = Array(Set(newArray))
+//        return newArray
+//    }
+    
+   // Задача 8. Написать метод, который будет переводить строку в транслит.
+    func task8(word: String){
         
-        for i in 0 ..< sortedArray.count {
-            for y in 1 ..< sortedArray.count - i {
-                if sortedArray[y-1] > sortedArray[y]{
-                    temp = sortedArray[y]
-                    sortedArray[y] = sortedArray[y-1]
-                    sortedArray[y-1] = temp
+        let dictionary = [
+            "А" : "A",
+            "Б" : "B",
+            "В" : "V",
+            "Г" : "G",
+            "Д" : "D",
+            "Е" : "E",
+            "Ё" : "Yo",
+            "Ж" : "Zh",
+            "З" : "Z",
+            "И" : "I",
+            "Й" : "Y",
+            "К" : "K",
+            "Л" : "L",
+            "М" : "M",
+            "Н" : "N",
+            "О" : "O",
+            "П" : "P",
+            "Р" : "R",
+            "С" : "S",
+            "Т" : "T",
+            "У" : "U",
+            "Ф" : "Ph",
+            "Х" : "H",
+            "Ц" : "C",
+            "Ч" : "Ch",
+            "Ш" : "Sh",
+            "Щ" : "Sch",
+            "Ъ" : "'",
+            "Ы" : "Y",
+            "Ь" : "'",
+            "Э" : "E",
+            "Ю" : "U",
+            "Я" : "Ya"
+        ]
+        var translatedWord = ""
+        for character in word {
+            if  let letter = dictionary[String(character.uppercased())] {
+                if character.isLowercase {
+                    translatedWord.append(letter.lowercased())
+                } else {
+                    translatedWord.append(letter)
                 }
+            
+            } else {
+                translatedWord.append(character)
             }
         }
-        return sortedArray
+        print("\(word) -> \(translatedWord)")
     }
-    
-    func removeDublicates(array: [Int]) -> [Int]{
-        var newArray = array
-        newArray = Array(Set(newArray))
-        return newArray
-    }
-    
 }
 
 
