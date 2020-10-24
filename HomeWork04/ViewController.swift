@@ -23,7 +23,8 @@ class ViewController: UIViewController {
 //        task6(password: "afd+34sdJSL")
 //        task7(array: [9, 1, 2, 4, 9, 1, 7, 7])
 //        task8(word: "Федор Иваночич, здравствуйте. Как дела?")
-        task9(word: "da")
+//        task9(word: "da")
+        task10(sentence: "Hello, fucker my fak")
     }
     
 //Задача 1. Создать строку с своим именем, вывести количество символов содержащихся в ней.
@@ -223,17 +224,46 @@ class ViewController: UIViewController {
 //        }
 //        print("\(word) -> \(translatedWord)")
 //    }
+    
     //Задача 9. Сделать выборку из массива строк в которых содержится указанная строка
-    func task9 (word: String){
-        let array = ["lada", "sedan", "baklashan"]
-        var filteredArray = [String]()
-        array.forEach { (value) in
-           if  value.contains(word){
-                filteredArray.append(value)
+//    func task9 (word: String){
+//        let array = ["lada", "sedan", "baklashan"]
+//        var filteredArray = [String]()
+//        array.forEach { (value) in
+//           if  value.contains(word){
+//                filteredArray.append(value)
+//            }
+//        }
+//        print("Original array is \(array)")
+//        print("Word \"\(word)\" contains in \(filteredArray)")
+//    }
+    
+    
+    
+    //Задача 10. [String] — antimat [“fuck”, “fak”] “hello my fak” “hello my ***”
+    //Для программы antimat — исключить из предложения все слова содержащиеся в сете
+    func task10(sentence: String){
+        let dictionary = ["fuck", "fak"]
+        var censored = ""
+        var word = ""
+        for character in sentence {
+            if character.isLetter {
+                word.append(character)
+                if dictionary.contains(word) {
+                        word = "***"
+                }
+                print(word)
+            } else {
+               
+               censored += word
+                word = ""
+                censored += String(character)
             }
         }
-        print("Original array is \(array)")
-        print("Word \"\(word)\" contains in \(filteredArray)")
+    //add last word
+      censored += word
+        print("Original sentence: \(sentence)")
+        print("Censored sentence: \(censored)")
     }
 }
 
