@@ -16,7 +16,9 @@ class ViewController: UIViewController {
  //       task1(name: "Aleksandr")
 //        task2(patronymic: "Геннадьевич")
 //        task3(name: "AlexYatsenko")
-        task4(word: "Ось")
+//        task4(word: "Ось")
+        task5(number: 1234567)
+        task5(number: 12345)
     }
     
 //Задача 1. Создать строку с своим именем, вывести количество символов содержащихся в ней.
@@ -52,12 +54,33 @@ class ViewController: UIViewController {
 //    }
     
     //Задача 4. Вывести строку зеркально Ось → ьсО не используя reverse (посимвольно)
-    func task4 (word: String){
-        var reversed = ""
-        for index in word.indices {
-            reversed.insert(word[index], at: word.startIndex)
+//    func task4 (word: String){
+//        var reversed = ""
+//        for index in word.indices {
+//            reversed.insert(word[index], at: word.startIndex)
+//        }
+//        print("\(word) -> \(reversed)")
+//    }
+    
+    //Задача 5. Добавить запятые в строку как их расставляет калькулятор
+    func task5(number: Int){
+        var formatedNumber = ""
+        var reversedNumber = String(number)
+        var comaCount = 0
+        
+        reversedNumber = String(reversedNumber.reversed())
+
+        for index in reversedNumber.indices {
+            formatedNumber.append(reversedNumber[index])
+           comaCount += 1
+            if comaCount == 3 {
+                formatedNumber.append(",")
+                comaCount = 0
+            }
         }
-        print("\(word) -> \(reversed)")
+        
+        formatedNumber = String(formatedNumber.reversed())
+        print("\(number) -> \(formatedNumber)")
     }
 }
 
