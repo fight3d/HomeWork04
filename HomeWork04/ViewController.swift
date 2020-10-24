@@ -22,7 +22,8 @@ class ViewController: UIViewController {
 //        task6(password: "12345qwerty")
 //        task6(password: "afd+34sdJSL")
 //        task7(array: [9, 1, 2, 4, 9, 1, 7, 7])
-        task8(word: "Федор Иваночич, здравствуйте. Как дела?")
+//        task8(word: "Федор Иваночич, здравствуйте. Как дела?")
+        task9(word: "da")
     }
     
 //Задача 1. Создать строку с своим именем, вывести количество символов содержащихся в ней.
@@ -169,58 +170,70 @@ class ViewController: UIViewController {
 //        return newArray
 //    }
     
-   // Задача 8. Написать метод, который будет переводить строку в транслит.
-    func task8(word: String){
-        
-        let dictionary = [
-            "А" : "A",
-            "Б" : "B",
-            "В" : "V",
-            "Г" : "G",
-            "Д" : "D",
-            "Е" : "E",
-            "Ё" : "Yo",
-            "Ж" : "Zh",
-            "З" : "Z",
-            "И" : "I",
-            "Й" : "Y",
-            "К" : "K",
-            "Л" : "L",
-            "М" : "M",
-            "Н" : "N",
-            "О" : "O",
-            "П" : "P",
-            "Р" : "R",
-            "С" : "S",
-            "Т" : "T",
-            "У" : "U",
-            "Ф" : "Ph",
-            "Х" : "H",
-            "Ц" : "C",
-            "Ч" : "Ch",
-            "Ш" : "Sh",
-            "Щ" : "Sch",
-            "Ъ" : "'",
-            "Ы" : "Y",
-            "Ь" : "'",
-            "Э" : "E",
-            "Ю" : "U",
-            "Я" : "Ya"
-        ]
-        var translatedWord = ""
-        for character in word {
-            if  let letter = dictionary[String(character.uppercased())] {
-                if character.isLowercase {
-                    translatedWord.append(letter.lowercased())
-                } else {
-                    translatedWord.append(letter)
-                }
-            
-            } else {
-                translatedWord.append(character)
+//   // Задача 8. Написать метод, который будет переводить строку в транслит.
+//    func task8(word: String){
+//
+//        let dictionary = [
+//            "А" : "A",
+//            "Б" : "B",
+//            "В" : "V",
+//            "Г" : "G",
+//            "Д" : "D",
+//            "Е" : "E",
+//            "Ё" : "Yo",
+//            "Ж" : "Zh",
+//            "З" : "Z",
+//            "И" : "I",
+//            "Й" : "Y",
+//            "К" : "K",
+//            "Л" : "L",
+//            "М" : "M",
+//            "Н" : "N",
+//            "О" : "O",
+//            "П" : "P",
+//            "Р" : "R",
+//            "С" : "S",
+//            "Т" : "T",
+//            "У" : "U",
+//            "Ф" : "Ph",
+//            "Х" : "H",
+//            "Ц" : "C",
+//            "Ч" : "Ch",
+//            "Ш" : "Sh",
+//            "Щ" : "Sch",
+//            "Ъ" : "'",
+//            "Ы" : "Y",
+//            "Ь" : "'",
+//            "Э" : "E",
+//            "Ю" : "U",
+//            "Я" : "Ya"
+//        ]
+//        var translatedWord = ""
+//        for character in word {
+//            if  let letter = dictionary[String(character.uppercased())] {
+//                if character.isLowercase {
+//                    translatedWord.append(letter.lowercased())
+//                } else {
+//                    translatedWord.append(letter)
+//                }
+//
+//            } else {
+//                translatedWord.append(character)
+//            }
+//        }
+//        print("\(word) -> \(translatedWord)")
+//    }
+    //Задача 9. Сделать выборку из массива строк в которых содержится указанная строка
+    func task9 (word: String){
+        let array = ["lada", "sedan", "baklashan"]
+        var filteredArray = [String]()
+        array.forEach { (value) in
+           if  value.contains(word){
+                filteredArray.append(value)
             }
         }
-        print("\(word) -> \(translatedWord)")
+        print("Original array is \(array)")
+        print("Word \"\(word)\" contains in \(filteredArray)")
     }
 }
 
