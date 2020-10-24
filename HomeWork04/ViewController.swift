@@ -19,8 +19,9 @@ class ViewController: UIViewController {
 //        task4(word: "Ось")
 //        task5(number: 1234567)
 //        task5(number: 12345)
-        task6(password: "12345qwerty")
-        task6(password: "afd+34sdJSL")
+//        task6(password: "12345qwerty")
+//        task6(password: "afd+34sdJSL")
+        task7(array: [9, 1, 2, 4, 9, 1, 7, 7])
     }
     
 //Задача 1. Создать строку с своим именем, вывести количество символов содержащихся в ней.
@@ -86,56 +87,86 @@ class ViewController: UIViewController {
 //    }
     
     // Задача 6. Проверить пароль на надежность от 1 до 5
-    func task6 (password: String){
-        var score = 0
-        var scoreItems = ""
-        
-        var hasNumbers = false
-        var hasUppercase = false
-        var hasLowercase = false
-        var hasSymbol = false
-        
-        
-        for character in password {
-            if character.isNumber {
-                hasNumbers = true
-            }
-            if character.isUppercase{
-                hasUppercase = true
-            }
-            if character.isLowercase{
-                hasLowercase = true
-            }
-            if character.isSymbol{
-                hasSymbol = true
-            }
-        }
+//    func task6 (password: String){
+//        var score = 0
+//        var scoreItems = ""
+//
+//        var hasNumbers = false
+//        var hasUppercase = false
+//        var hasLowercase = false
+//        var hasSymbol = false
+//
+//
+//        for character in password {
+//            if character.isNumber {
+//                hasNumbers = true
+//            }
+//            if character.isUppercase{
+//                hasUppercase = true
+//            }
+//            if character.isLowercase{
+//                hasLowercase = true
+//            }
+//            if character.isSymbol{
+//                hasSymbol = true
+//            }
+//        }
+//
+//        if hasNumbers {
+//            score += 1
+//            scoreItems += "a)"
+//        }
+//        if hasUppercase {
+//            score += 1
+//            scoreItems += " b)"
+//        }
+//        if hasLowercase {
+//            score += 1
+//            scoreItems += " c)"
+//        }
+//        if hasSymbol {
+//            score += 1
+//            scoreItems += " d)"
+//        }
+//
+//        if scoreItems == "a) b) c) d)" {
+//            scoreItems = "a) b) c) d) e)"
+//            score += 1
+//        }
+//
+//        print("Password \(password) has score \(score) and contains \(scoreItems)")
+//    }
+    
+    
+    //Задача 7. Сортировка массива не встроенным методом по возрастанию + удалить дубликаты
+    func task7(array: [Int]){
+        let sortedArray = sortArray(array: array)
+        let arrayWithNoDublicated = removeDublicates(array: sortedArray)
+        print("\(array) -> \(arrayWithNoDublicated)")
        
-        if hasNumbers {
-            score += 1
-            scoreItems += "a)"
-        }
-        if hasUppercase {
-            score += 1
-            scoreItems += " b)"
-        }
-        if hasLowercase {
-            score += 1
-            scoreItems += " c)"
-        }
-        if hasSymbol {
-            score += 1
-            scoreItems += " d)"
-        }
-        
-        if scoreItems == "a) b) c) d)" {
-            scoreItems = "a) b) c) d) e)"
-            score += 1
-        }
+    }
 
-        print("Password \(password) has score \(score) and contains \(scoreItems)")
+    func sortArray (array : [Int]) -> [Int]{
+        var sortedArray = array
+        var temp : Int
+        
+        for i in 0 ..< sortedArray.count {
+            for y in 1 ..< sortedArray.count - i {
+                if sortedArray[y-1] > sortedArray[y]{
+                    temp = sortedArray[y]
+                    sortedArray[y] = sortedArray[y-1]
+                    sortedArray[y-1] = temp
+                }
+            }
+        }
+        return sortedArray
     }
     
+    func removeDublicates(array: [Int]) -> [Int]{
+        var newArray = array
+        newArray = Array(Set(newArray))
+        return newArray
+    }
     
 }
 
